@@ -5,7 +5,7 @@
     <classes>
       <class name="com.testclass.GetTestClass">
         <methods>
-          <include name="getCallAPI" invocation-numbers="0 1 2"/>
+          <include name="getCallAPI" invocation-numbers="2"/>
         </methods>
       </class> <!-- com.testclass.GetTestClass -->
     </classes>

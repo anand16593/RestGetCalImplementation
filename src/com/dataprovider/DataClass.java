@@ -40,9 +40,10 @@ public class DataClass {
 				String apiname= rowdata.getCell(3).toString();
 				
 				data[i-1][0]=url;
-				System.out.println("api is "+url);
+				//System.out.println("api is "+url);
 				data[i-1][1]=rescode;
 				data[i-1][2]=resdata.trim().replaceAll("\\s+", "");
+				//System.out.println(data[i-1][2]);
 				data[i-1][3]=apiname;
 		}
 		return data;		

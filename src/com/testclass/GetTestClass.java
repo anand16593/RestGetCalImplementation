@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.dataprovider.DataClass;
@@ -20,7 +21,7 @@ public class GetTestClass {
 	{
 		
 		String acctoken=TokenClass.getToken();
-		
+		System.out.print("Response for API:"+apiname+" is -> ");
 		
 		double k=Double.parseDouble(stcode);
 		int statuscode=(int) k;
@@ -31,8 +32,19 @@ public class GetTestClass {
 				conn.setRequestProperty("Accept", "application/json");
 				conn.setRequestProperty("Authorization","Bearer "+acctoken);
 
+				int k1=conn.getResponseCode();
+				if(k1==statuscode)
+					System.out.println("Pass");
+				else
+					System.out.println("Fail");
+				
 				if (conn.getResponseCode() != statuscode) 
 				{
+					
+					
+					
+					Assert.assertTrue(k1==statuscode);
+					
 					System.out.println("Received status Code does not macth with excel status code");
 					throw new RuntimeException("Failed : HTTP error code : "
 							+ conn.getResponseCode());
@@ -42,7 +54,7 @@ public class GetTestClass {
 					(conn.getInputStream())));
 
 				String output=null;
-				System.out.println("Response for API:"+apiname+" is ");
+				
 				String op=null;
 				
 				while ((output = br.readLine()) != null) 
@@ -50,8 +62,8 @@ public class GetTestClass {
 					op=output;
 					System.out.println(output);
 				}
-							
-				if(op.equalsIgnoreCase(res))
+				String op2=op.trim().replaceAll("\\s+", "");			
+				if(op2.equalsIgnoreCase(res))
 					System.out.println("API Response matches successfully");
 				else
 					System.out.println("API Response fails to match");
@@ -69,6 +81,11 @@ public class GetTestClass {
 				e.printStackTrace();
 
 			  }
+		 catch(RuntimeException re)
+		 {
+			 
+			 System.out.println("Runtime Exception occurs");
+		 }
 		
 	}
 

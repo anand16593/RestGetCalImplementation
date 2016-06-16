@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="1" total="3" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2040" started-at="2016-06-16T14:46:44Z" finished-at="2016-06-16T14:46:46Z">
+  <suite name="Default suite" duration-ms="2419" started-at="2016-06-16T15:30:29Z" finished-at="2016-06-16T15:30:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2040" started-at="2016-06-16T14:46:44Z" finished-at="2016-06-16T14:46:46Z">
+    <test name="Default test" duration-ms="2419" started-at="2016-06-16T15:30:29Z" finished-at="2016-06-16T15:30:32Z">
       <class name="com.testclass.GetTestClass">
-        <test-method status="PASS" signature="getCallAPI(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testclass.GetTestClass@6a2bcfcb]" name="getCallAPI" duration-ms="947" started-at="2016-06-16T20:16:44Z" data-provider="apidata" finished-at="2016-06-16T20:16:45Z">
+        <test-method status="PASS" signature="getCallAPI(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testclass.GetTestClass@6a2bcfcb]" name="getCallAPI" duration-ms="926" started-at="2016-06-16T21:00:30Z" data-provider="apidata" finished-at="2016-06-16T21:00:31Z">
           <params>
             <param index="0">
               <value>
@@ -33,7 +33,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getCallAPI -->
-        <test-method status="PASS" signature="getCallAPI(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testclass.GetTestClass@6a2bcfcb]" name="getCallAPI" duration-ms="955" started-at="2016-06-16T20:16:45Z" data-provider="apidata" finished-at="2016-06-16T20:16:46Z">
+        <test-method status="PASS" signature="getCallAPI(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testclass.GetTestClass@6a2bcfcb]" name="getCallAPI" duration-ms="621" started-at="2016-06-16T21:00:31Z" data-provider="apidata" finished-at="2016-06-16T21:00:31Z">
           <params>
             <param index="0">
               <value>
@@ -56,6 +56,71 @@
               </value>
             </param>
           </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getCallAPI -->
+        <test-method status="FAIL" signature="getCallAPI(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.testclass.GetTestClass@6a2bcfcb]" name="getCallAPI" duration-ms="722" started-at="2016-06-16T21:00:31Z" data-provider="apidata" finished-at="2016-06-16T21:00:32Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[http://tstapi.bankoncube.com/v1/user/accounts/8110376408769]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[200.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[{"id":81103764087690,"bankAccountNumber":"","category":"BANK","type":{"id":3,"name":"SAVINGS","description":"SavingsBankAccount"},"status":"INACTIVE","currency":"INR","bank":{"name":"AndhraBank","code":"AB","prefix":811,"metadata":null,"enabled":1,"created":1465540002000,"lastModified":1465540002000},"userId":"9931969584030080132","createdDate":1465548287000,"updatedDate":1465548287000,"balance":"0"}]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Get accounts by account id]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.testclass.GetTestClass.getCallAPI(GetTestClass.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:646)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:823)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at org.testng.TestRunner.privateRun(TestRunner.java:778)
+	at org.testng.TestRunner.run(TestRunner.java:632)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1225)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1150)
+	at org.testng.TestNG.runSuites(TestNG.java:1075)
+	at org.testng.TestNG.run(TestNG.java:1047)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getCallAPI -->
