@@ -6,32 +6,34 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
 import com.dataprovider.DataClass;
+import com.token.TokenClass;
 
 public class GetTestClass {
 	
 	@Test(dataProvider="apidata",dataProviderClass=DataClass.class)
-	public void getCallAPI(String newurl, String stcode, String res,String a1,String a2,String a3,String a4,String a5) 
+	public void getCallAPI(String url1, String stcode, String res,String apiname) throws ParseException 
 	{
 		
-		//System.out.println("url: "+newurl);
-		//System.out.println("status code: "+stcode);
-		//System.out.println("response data: "+res);
+		String acctoken=TokenClass.getToken();
+		
 		
 		double k=Double.parseDouble(stcode);
 		int statuscode=(int) k;
-		
-	
 		 try {
-
-				URL url = new URL(newurl);
+				URL url = new URL(url1);
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Accept", "application/json");
+				conn.setRequestProperty("Authorization","Bearer "+acctoken);
 
-				if (conn.getResponseCode() != statuscode) {
+				if (conn.getResponseCode() != statuscode) 
+				{
+					System.out.println("Received status Code does not macth with excel status code");
 					throw new RuntimeException("Failed : HTTP error code : "
 							+ conn.getResponseCode());
 				}
@@ -40,7 +42,7 @@ public class GetTestClass {
 					(conn.getInputStream())));
 
 				String output=null;
-				System.out.println("Output from Server .... \n");
+				System.out.println("Response for API:"+apiname+" is ");
 				String op=null;
 				
 				while ((output = br.readLine()) != null) 
@@ -50,9 +52,10 @@ public class GetTestClass {
 				}
 							
 				if(op.equalsIgnoreCase(res))
-					System.out.println("I am right here");
+					System.out.println("API Response matches successfully");
 				else
-					System.out.println("something went wrong");
+					System.out.println("API Response fails to match");
+				
 				conn.disconnect();
 
 			  } catch (MalformedURLException e) {
