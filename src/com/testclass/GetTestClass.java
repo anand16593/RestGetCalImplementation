@@ -38,16 +38,9 @@ public class GetTestClass {
 				else
 					System.out.println("Fail");
 				
-				if (conn.getResponseCode() != statuscode) 
-				{
-					
-					
-					
+				if (k1 != statuscode) 
+				{					
 					Assert.assertTrue(k1==statuscode);
-					
-					System.out.println("Received status Code does not macth with excel status code");
-					throw new RuntimeException("Failed : HTTP error code : "
-							+ conn.getResponseCode());
 				}
 
 				BufferedReader br = new BufferedReader(new InputStreamReader(
